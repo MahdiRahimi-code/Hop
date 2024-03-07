@@ -1,18 +1,18 @@
+import random
 scores = []
 print("Welcome to the game")
 print("Please notice to write \'hope\' word correctly")
 
 while 1:
     coffiesient = int(input("Please Enter coffiesient number: "))
-    if (coffiesient>0):
+    if (coffiesient>1):
         break
     else:
         print("Unallowed Number")
 counter=1
 score=0
-highScore=0
 lose = False
-i=1
+i=random.randint(0, 100)
 hope=counter*coffiesient
 turn="Computer"
 finishGame=False
@@ -39,15 +39,15 @@ while finishGame!=True:
                     counter+=1
                     hope=counter*coffiesient
             else:
-                if len(inp)>1:
+                try:
+                    inp=int(inp)
+                except ValueError as v:
+                    lose=True
+                if inp!=i:
                     lose=True
                 else:
-                    inp=int(inp)
-                    if inp!=i:
-                        lose=True
-                    else:
-                        turn="Computer"
-                        score+=1
+                    turn="Computer"
+                    score+=1
         i+=1
 
     print("You Lost :(")
@@ -57,7 +57,7 @@ while finishGame!=True:
     for i in scores:
         m=max(m, i)
     print("Best Score: ", m)
-    awn = input("Do you want to continue? Y/N")
+    awn = input("Do you want to continue? Y/N ")
     if awn=="N":
         finishGame=True
     else:
@@ -73,4 +73,4 @@ while finishGame!=True:
             else:
                 print("Unallowed Number")
         hope=counter*coffiesient
-print("Thanks for Choosing Game")
+print("Thanks for Choosing Our Game")
